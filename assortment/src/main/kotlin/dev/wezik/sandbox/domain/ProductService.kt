@@ -49,6 +49,6 @@ class ProductService(
 
   suspend fun create(command: CreateProductCommand): Product {
     logger.debug { "Creating product $command" }
-    return command.toProduct()
+    return repository.create(command.toProduct())
   }
 }
