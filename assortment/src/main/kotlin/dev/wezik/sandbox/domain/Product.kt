@@ -1,3 +1,7 @@
+package dev.wezik.sandbox.domain
+
+import java.util.*
+
 data class Product(
   val id: UUID,
   val styles: List<Style>,
