@@ -22,6 +22,12 @@ plugins {
   id("com.diffplug.spotless") version "8.3.0"
 }
 
+// Gradle wrapper
+
+tasks.wrapper {
+  gradleVersion = "9.4.0"
+}
+
 // Dependencies
 
 repositories {

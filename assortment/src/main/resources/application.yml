@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: assortment
+
+server:
+  port: 8081
