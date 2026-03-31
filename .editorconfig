@@ -1,0 +1,48 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+max_line_length = 120
+
+[*.{kt,kts}]
+# Consistent import order between IDEA Kotlin formatter and KtLint.
+ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
+# Disable wildcard imports in IDEA Kotlin formatter and KtLint.
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = unset
+
+# Start with IntelliJ IDEA-like rule set, which is very similar to IDEA Kotlin, just more strict.
+# The default, `ktlint_official`, is far more opinionated.
+ktlint_code_style = intellij_idea
+# Don't force adding braces for if/else statements on different lines.
+ktlint_standard_multiline-if-else = disabled
+# Don't force adding braces for looping statements with multiline bodies.
+ktlint_standard_multiline-loop = disabled
+# Put multiline function body expressions on new line, but allow one-liners that fit on one line.
+ktlint_function_signature_body_expression_wrapping = multiline
+# Don't force multiline expressions on new lines, since we sparingly (but regularly) use those.
+ktlint_standard_multiline-expression-wrapping = disabled
+# Don't wrap parameter definitions - these should always fit on one line and issue an error otherwise.
+ktlint_standard_parameter-wrapping = disabled
+# Don't wrap property definitions - these should always fit on one line and issue an error otherwise.
+ktlint_standard_property-wrapping = disabled
+
+[*Spec.kt]
+# Prevent specs `Spec : FreeSpec({ ... })` from being broken into multiple lines and indented.
+ktlint_standard_class-signature = disabled
+# Prevent given/when/then sections in API tests, heavily using chained verifications, from getting clumped together.
+ktlint_standard_no-blank-lines-in-chained-method-calls = disabled
+
+[*.{yml,yaml}]
+max_line_length = off
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+indent_size = unset
