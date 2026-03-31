@@ -1,3 +1,12 @@
+logging:
+  level:
+    root: INFO
+    dev.wezik.sandbox: DEBUG
+  pattern:
+    # A cleaned up, shortened console pattern based on Spring Boot defaults, including MDC.
+    # See: spring-boot-3.5.4.jar!/org/springframework/boot/logging/logback/defaults.xml
+    console: '${CONSOLE_LOG_PATTERN:%clr(%date{YYYY-MM-dd''T''HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %highlight(%-5level) %magenta(%-40.40logger{39}) %green({%mdc} :) %message%n%wEx}'
+
 spring:
   application:
     name: assortment
