@@ -1,0 +1,9 @@
+services:
+  localstack:
+    image: localstack/localstack:4.14.0
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sns,sqs
+    volumes:
+      - ./localstack-init:/etc/localstack/init/ready.d

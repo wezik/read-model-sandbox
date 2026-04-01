@@ -13,3 +13,11 @@ spring:
 
 server:
   port: 8080
+
+events:
+  topic-arn: ${SNS_TOPIC_ARN:arn:aws:sns:us-east-1:000000000000:product-events.fifo}
+  max-batch-count: 50
+  max-batch-bytes: 200000
+  flush-interval-ms: 2000
+  region: us-east-1
+  endpoint-override: ${SNS_ENDPOINT:http://localhost:4566}

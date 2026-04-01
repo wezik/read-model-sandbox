@@ -42,6 +42,7 @@ dependencyManagement {
   imports {
     mavenBom("org.springframework.modulith:spring-modulith-bom:2.0.3")
     mavenBom("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2")
+    mavenBom("aws.sdk.kotlin:bom:1.6.36")
   }
 
   dependencies {
@@ -61,6 +62,10 @@ dependencyManagement {
     // project.extra["flyway.version"] = RecommendedVersions.FLYWAY_VERSION
     // dependency("org.jooq:jooq-kotlin-coroutines:${project.extra["jooq.version"]}")
     // dependency("org.jooq:jooq-jackson-extensions:${project.extra["jooq.version"]}")
+
+    // Web
+    dependency("com.fasterxml.jackson.datatype:jackson-datatype-joda-money:2.21.1")
+    dependency("io.ktor:ktor-serialization-jackson:3.4.1")
 
     // Tests
     dependency("io.mockk:mockk:1.14.9")
@@ -99,9 +104,13 @@ dependencies {
   // implementation("org.springdoc:springdoc-openapi-starter-webflux-ui")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.boot:spring-boot-starter-webclient")
-  // implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-  // implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda-money")
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+  implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda-money")
+  implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+  // Spring Boot 4 defaults to Jackson 3. AWS SDK still uses Jackson 2.
+  implementation("org.springframework.boot:spring-boot-jackson2")
   implementation("org.springframework.data:spring-data-commons")
+  implementation("io.ktor:ktor-serialization-jackson")
 
   // Persistence (R2DBC, Jooq)
   // implementation("org.springframework.boot:spring-boot-starter-r2dbc")
@@ -120,7 +129,7 @@ dependencies {
   // AWS
   // implementation("aws.sdk.kotlin:s3")
   // implementation("aws.sdk.kotlin:sqs")
-  // implementation("aws.sdk.kotlin:sns")
+  implementation("aws.sdk.kotlin:sns")
 
   // Testing
   testImplementation("io.mockk:mockk")

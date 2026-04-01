@@ -1,5 +1,7 @@
 package dev.wezik.sandbox.domain
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import dev.wezik.sandbox.domain.event.EventPublisher
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
 import java.util.*
@@ -38,6 +40,7 @@ private fun CreateArticleCommand.toProduct() = Article(
 @Service
 class ProductService(
   private val repository: ProductRepository,
+  private val eventPublisher: EventPublisher<ProductEvent>,
 ) {
 
   private val logger = KotlinLogging.logger {}
@@ -49,6 +52,8 @@ class ProductService(
 
   suspend fun create(command: CreateProductCommand): Product {
     logger.debug { "Creating product $command" }
-    return repository.create(command.toProduct())
+    val product = repository.create(command.toProduct())
+    eventPublisher.publish(ProductEvent.Created(product))
+    return product
   }
 }
