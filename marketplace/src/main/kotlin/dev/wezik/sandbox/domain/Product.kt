@@ -23,6 +23,6 @@ data class Article(
 )
 
 data class VersionedAttributes(
-  val local: Map<String, String>,
-  val sent: Map<String, String>,
+    val local: List<MappingContext>,
+    val sent: List<MappingContext>,
 )

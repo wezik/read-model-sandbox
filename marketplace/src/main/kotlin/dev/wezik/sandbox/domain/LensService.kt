@@ -19,8 +19,8 @@ class LensService {
       id = UUID.randomUUID(),
       assortmentId = UUID.randomUUID(),
       versions = VersionedAttributes(
-        local = mapOf("title" to "Some title"),
-        sent = mapOf("title" to "Some title"),
+        local = someMapping(),
+        sent = someMapping(),
       ),
       styles = listOf(someStyle()),
     )
@@ -31,8 +31,8 @@ class LensService {
       id = UUID.randomUUID(),
       assortmentId = UUID.randomUUID(),
       versions = VersionedAttributes(
-        local = mapOf("title" to "Some title"),
-        sent = mapOf("title" to "Some title"),
+        local = someMapping(),
+        sent = someMapping(),
       ),
       articles = listOf(someArticle()),
     )
@@ -43,8 +43,8 @@ class LensService {
       id = UUID.randomUUID(),
       assortmentId = UUID.randomUUID(),
       versions = VersionedAttributes(
-        local = mapOf("title" to "Some title"),
-        sent = mapOf("title" to "Some title"),
+        local = someMapping(),
+        sent = someMapping(),
       ),
     )
   }
@@ -65,4 +65,6 @@ class LensService {
   private fun someChannel(): MarketplaceChannel {
     return listOf(MarketplaceChannel.SANDBOX, MarketplaceChannel.POLAND, MarketplaceChannel.GERMANY).random()
   }
+
+  private fun someMapping() = listOf(MappingContext(attribute = Attribute("color"), targetAttribute = TargetAttribute("color"), mapping = Mapping("red", "red")))
 }
