@@ -1,0 +1,16 @@
+logging:
+  level:
+    root: INFO
+    dev.wezik.sandbox: DEBUG
+  pattern:
+    console: '${CONSOLE_LOG_PATTERN:%clr(%date{YYYY-MM-dd''T''HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %highlight(%-5level) %magenta(%-40.40logger{39}) %green({%mdc} :) %message%n%wEx}'
+
+spring:
+  application:
+    name: marketplace
+
+server:
+  port: 8081
+
+assortment:
+  base-url: http://localhost:8081
