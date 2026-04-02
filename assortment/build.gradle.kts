@@ -103,6 +103,7 @@ dependencies {
   // Web
   // implementation("org.springdoc:springdoc-openapi-starter-webflux-ui")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
+  implementation("org.springframework.boot:spring-boot-starter-jdbc")
   implementation("org.springframework.boot:spring-boot-starter-webclient")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda-money")
@@ -130,6 +131,16 @@ dependencies {
   // implementation("aws.sdk.kotlin:s3")
   // implementation("aws.sdk.kotlin:sqs")
   implementation("aws.sdk.kotlin:sns")
+
+  // Postgres + jOOQ for persistence
+  implementation("org.postgresql:postgresql:42.7.7")
+  implementation("org.jooq:jooq:3.20.4")
+  implementation("org.jooq:jooq-kotlin:3.20.4")
+
+  // ShedLock for distributed scheduling
+  // Source: https://mvnrepository.com/artifact/net.javacrumbs.shedlock/shedlock-spring
+  implementation("net.javacrumbs.shedlock:shedlock-spring:7.7.0")
+  implementation("net.javacrumbs.shedlock:shedlock-provider-jdbc-template:7.7.0")
 
   // Testing
   testImplementation("io.mockk:mockk")

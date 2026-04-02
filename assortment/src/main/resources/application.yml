@@ -10,14 +10,24 @@ logging:
 spring:
   application:
     name: assortment
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sandbox
+    username: sandbox
+    password: sandbox
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
 
 server:
   port: 8080
 
 events:
   topic-arn: ${SNS_TOPIC_ARN:arn:aws:sns:us-east-1:000000000000:product-events.fifo}
-  max-batch-count: 50
-  max-batch-bytes: 200000
-  flush-interval-ms: 2000
   region: us-east-1
   endpoint-override: ${SNS_ENDPOINT:http://localhost:4566}
+  outbox:
+    poll-interval-ms: 1000
+    batch-size: 500
+    max-batch-bytes: 200000
+    retention-hours: 1
+    cleanup-interval-ms: 10
